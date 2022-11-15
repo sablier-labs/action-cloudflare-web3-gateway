@@ -1,20 +1,17 @@
-# cloudflare-update-dnslink
+# cloudflare-update-web3-gateway
 
-Allows you to quickly update a Cloudflare DNSLink with a new IPFS CID. This action requires that you have already created a DNS Link record in your Cloudflare DNS settings. Additionally, you will need a Cloudflare Token with sufficient permissions to edit the DNS record.
+Allows you to quickly update a Cloudflare Web3 Gateway with a new IPFS CID. This action requires that you have already created a Web3 Gateway in your Cloudflare settings. Additionally, you will need a Cloudflare Token with sufficient permissions to edit the record.
 
 ## Example
 
 ```yml
-- name: Update DNSLink
+- name: Update Web3 Gateway
   env:
     CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-    RECORD_DOMAIN: "textile.io"
-    RECORD_NAME: "_dnslink.subdomainname"
     CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-  id: dnslink
-  uses: textileio/cloudflare-update-dnslink@master
+    CLOUDFLARE_GATEWAY_ID: ${{ secrets.CLOUDFLARE_GATEWAY_ID }}
+  id: web3gateway
+  uses: uniswap/cloudflare-update-web3-gateway@master
   with:
     cid: ${{ steps.push.outputs.cid }}
 ```
-
-For a more complete tutorial, see [this blog post](https://blog.textile.io/ethden-using-ci-to-publish-your-webpage-using-ipfs-and-textile-buckets/).
